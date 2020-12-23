@@ -255,7 +255,7 @@ class Elasticsearch {
 		if ( version_compare( $this->get_elasticsearch_version(), '7.0', '<' ) ) {
 			$path = $index . '/' . $type . '/_search';
 		} else {
-			$path = $index . '/_search';
+			$path = $index . '/_search?track_total_hits=true';
 		}
 
 		// For backwards compat
