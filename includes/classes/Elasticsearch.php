@@ -29,7 +29,7 @@ class Elasticsearch {
 	private $queries = [];
 
 	/**
-	 * ES plugins
+	 * ES plugins 
 	 *
 	 * @var array
 	 * @since  2.2
@@ -255,6 +255,9 @@ class Elasticsearch {
 		if ( version_compare( $this->get_elasticsearch_version(), '7.0', '<' ) ) {
 			$path = $index . '/' . $type . '/_search';
 		} else {
+			// old - limit 10000 hits
+			$path = $index . '/_search';
+			// new - return all hits
 			$path = $index . '/_search?track_total_hits=true';
 		}
 
